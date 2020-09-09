@@ -31,6 +31,7 @@ const PlayerView = props => {
   const audio = new Audio();
   useEffect(() => {
     if (props.audioContent) {
+
       audio.src = "data:audio/wav;base64," + props.audioContent;
       audio.play()
       // setPlaying(true)

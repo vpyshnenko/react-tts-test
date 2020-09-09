@@ -2,14 +2,14 @@ import React from "react";
 import { Box, TextArea } from "gestalt";
 import { Consumer } from "../context";
 
-const EditorView = () => {
+const EditorView = ({text, setText}) => {
   const [value, setValue] = React.useState("");
   return (
     <TextArea
       id="editor"
-      onChange={({ value }) => setValue(value)}
+      onChange={({ value }) => setText(value)}
       placeholder="Write here something about yourself..."
-      value={value}
+      value={text}
     />
   );
 };

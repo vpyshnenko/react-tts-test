@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {ttsRequest} from './services'
+import {ttsRequest, ttsRequest2} from './services'
 
 
 
@@ -8,6 +8,7 @@ const AppContext = React.createContext();
 export const Consumer = AppContext.Consumer
 export class Provider extends Component {
     state = {
+      text: '',
       audioContent: undefined,
         cars: {
             car001: { name: 'Honda', price: 100 },
@@ -23,8 +24,9 @@ export class Provider extends Component {
                     text: this.state.text,
                     audioContent: this.state.audioContent,
                     setText: (text)=>this.setState({text}),
-                    getAudio: async (text)=>{
-                      const {audioContent} = await ttsRequest(this.state.text)
+                    getAudio: async ()=>{
+                      console.log('state', this.state)
+                      const {audioContent} = await ttsRequest2(this.state.text)
                       this.setState({audioContent})
 
                     }
