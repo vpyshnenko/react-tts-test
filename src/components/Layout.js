@@ -5,6 +5,7 @@ import Logo from './Logo'
 import More from './More'
 import SpeedList from './SpeedList'
 import Editor from './Editor'
+import Player from './Player'
 
 const Header = () => (
   <Box padding={3} display="flex" justifyContent="between">
@@ -13,9 +14,11 @@ const Header = () => (
       <Logo />
     </Box>
     <Box display="flex">
-      {/*<Player />*/}
+      <Box marginRight={2}><Player /></Box>
       {/*<VoiceList />*/}
-      <SpeedList />
+      <Box marginRight={2}><SpeedList /></Box>
+      <Box marginRight={2}><SpeedList /></Box>
+    
     </Box>
     <More />
   </Box>
