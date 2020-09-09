@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, IconButton, Text } from 'gestalt';
 
-export default function A11yExDisclosure() {
+export default function Player() {
   const [isOpen, setOpen] = React.useState(false);
 
   return (
