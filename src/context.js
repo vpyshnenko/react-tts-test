@@ -20,11 +20,11 @@ export class Provider extends Component {
         return (
             <AppContext.Provider
                 value={{
-                    cars: this.state.cars,
+                    text: this.state.text,
                     audioContent: this.state.audioContent,
+                    setText: (text)=>this.setState({text}),
                     getAudio: async (text)=>{
-                      const {audioContent} = await ttsRequest()
-                      console.log('audioCont')
+                      const {audioContent} = await ttsRequest(this.state.text)
                       this.setState({audioContent})
 
                     }

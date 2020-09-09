@@ -26,26 +26,49 @@ console.log('propps', props)
 */
 
 const PlayerView = props => {
-  const [isOpen, setOpen] = React.useState(false);
+ 
+  const [playing, setPlaying] = useState(false);
   const audio = new Audio();
   useEffect(() => {
     if (props.audioContent) {
       audio.src = "data:audio/wav;base64," + props.audioContent;
-      audio.play();
+      audio.play()
+      // setPlaying(true)
     }
   }, [props.audioContent]);
+  // useEffect(() => {
+  //   console.log(playing)
+  //     playing ? audio.play() : audio.pause();
+  //   },
+  //   [playing]
+  // );
+  //  useEffect(() => {
+  //   audio.addEventListener('ended', () => setPlaying(false));
+  //   return () => {
+  //     audio.removeEventListener('ended', () => setPlaying(false));
+  //   };
+  // }, []);
 
   return (
     <>
       <IconButton
         bgColor="red"
         iconColor="white"
-        accessibilityControls="accordion-panel"
-        accessibilityExpanded={isOpen}
-        accessibilityLabel={isOpen ? "See less" : "See more"}
-        icon={isOpen ? "play" : "pause"}
+        accessibilityLabel={playing ? "Pause" : "Play"}
+        icon={playing ? "pause" : "play"}
         // onClick={() => setOpen(!isOpen)}
-        onClick={() => props.getAudio()}
+        onClick={async() => {
+          if(!playing){
+            await props.getAudio()
+            // setPlaying(true)
+            // audio.play()
+
+          } else {
+            setPlaying(false)
+            audio.pause()
+          }
+          
+        }}
       />
     </>
   );
