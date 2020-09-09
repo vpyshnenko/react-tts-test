@@ -7,6 +7,9 @@ import SpeedList from './SpeedList'
 import Editor from './Editor'
 import Player from './Player'
 
+import "./styles/style.css";
+import 'gestalt/dist/gestalt.css';
+
 const Header = () => (
   <Box padding={3} display="flex" justifyContent="between">
     <Box display="flex" alignItems="center">

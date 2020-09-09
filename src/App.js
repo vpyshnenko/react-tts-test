@@ -1,18 +1,11 @@
-       import React from "react";
-import "./style.css";
-import Select from './SelectList'
-import Player from './Player'
-import Layout from './components/Layout'
-import 'gestalt/dist/gestalt.css';
+import React from "react";
+import {Provider} from "./context";
+import Layout from "./components/Layout";
 
 export default function App() {
   return (
-
-   
+    <Provider>
       <Layout />
-
-
-
+    </Provider>
   );
 }
-
