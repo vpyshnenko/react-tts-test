@@ -4,6 +4,7 @@ import Menu from './Menu'
 import Logo from './Logo'
 import More from './More'
 import SpeedList from './SpeedList'
+import VoiceList from './VoiceList'
 import Editor from './Editor'
 import Player from './Player'
 
@@ -19,7 +20,7 @@ const Header = () => (
     <Box display="flex">
       <Box marginRight={2}><Player /></Box>
       {/*<VoiceList />*/}
-      <Box marginRight={2}><SpeedList /></Box>
+      <Box marginRight={2}><VoiceList /></Box>
       <Box marginRight={2}><SpeedList /></Box>
     
     </Box>

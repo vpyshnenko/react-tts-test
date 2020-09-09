@@ -11,11 +11,7 @@ export class Provider extends Component {
       text: '',
       audioContent: undefined,
       speakingRate: 1,
-        cars: {
-            car001: { name: 'Honda', price: 100 },
-            car002: { name: 'BMW', price: 150 },
-            car003: { name: 'Mercedes', price: 200 }
-        }
+      voiceName: 'en-US-Wavenet-D',
     };
 
     render() {
@@ -25,11 +21,13 @@ export class Provider extends Component {
                     text: this.state.text,
                     audioContent: this.state.audioContent,
                     speakingRate: this.state.speakingRate,
+                    voiceName: this.state.voiceName,
                     setText: (text)=>this.setState({text}),
                     setSpeakingRate: (speakingRate) => this.setState({speakingRate}),
+                    setVoiceName: (voiceName) => this.setState({voiceName}),
                     getAudio: async ()=>{
                       console.log('state', this.state)
-                      const {audioContent} = await ttsRequest(this.state.text, this.state.speakingRate)
+                      const {audioContent} = await ttsRequest(this.state.text, this.state.speakingRate, this.state.voiceName)
                       this.setState({audioContent})
 
                     }

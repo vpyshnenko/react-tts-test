@@ -21,36 +21,30 @@ async function postData(url = '', data = {}) {
 
 const data = { "input": { "text": "Hello" }, "voice": { "languageCode": "en-US", "name": "en-US-Wavenet-D" }, "audioConfig": { "audioEncoding": "LINEAR16", "pitch": 0, "speakingRate": 1 } }
 
-function submit() {
 
-    const text = document.querySelector('#text-input').value
-    data.input.text = text
-    data.voice = {
-        languageCode: 'en-US', 
-        name: 'ru-RU-Wavenet-B'
-    }
-    postData('https://texttospeech.googleapis.com/v1/text:synthesize', data)
-        .then((data) => {
-            console.log(data); // JSON data parsed by `response.json()` call
-            // const audio = new Audio('data:audio/wav;base64,' + data.audioContent)
-            // audio.play()
-            const player = document.querySelector('#player')
-            player.src = 'data:audio/wav;base64,' + data.audioContent
-            player.play()
-        });
-}
-export async function ttsRequest(text, speakingRate, langName){
+export async function ttsRequest(text, speakingRate, voiceName){
  data.input.text = text
  data.audioConfig.speakingRate = speakingRate
     data.voice = {
         languageCode: 'en-US', 
-        name: langName
+        name: voiceName
     }
     const res = await postData('https://texttospeech.googleapis.com/v1/text:synthesize', data)
     return res
 }
 
+export async function getVoices() {
+    const response = await fetch('https://texttospeech.googleapis.com/v1/voices', {
+        headers: {
+            'X-Goog-Api-Key': 'AIzaSyBUrG7YyqBHH-TcgwACamVt3mlNU2u5dR4'
+           },
 
+    })
+    const data = await response.json()
+    const voiceNames =  data.voices.filter(voice => voice.name.includes('en-US')).map(item => item.name)
+    console.log('voiceNames', voiceNames)
+    return voiceNames
+}
 
 export async function ttsRequest2(text){
   return {
