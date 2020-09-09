@@ -10,6 +10,7 @@ export class Provider extends Component {
     state = {
       text: '',
       audioContent: undefined,
+      speakingRate: 1,
         cars: {
             car001: { name: 'Honda', price: 100 },
             car002: { name: 'BMW', price: 150 },
@@ -23,10 +24,12 @@ export class Provider extends Component {
                 value={{
                     text: this.state.text,
                     audioContent: this.state.audioContent,
+                    speakingRate: this.state.speakingRate,
                     setText: (text)=>this.setState({text}),
+                    setSpeakingRate: (speakingRate) => this.setState({speakingRate}),
                     getAudio: async ()=>{
                       console.log('state', this.state)
-                      const {audioContent} = await ttsRequest2(this.state.text)
+                      const {audioContent} = await ttsRequest(this.state.text, this.state.speakingRate)
                       this.setState({audioContent})
 
                     }

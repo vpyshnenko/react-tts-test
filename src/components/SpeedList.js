@@ -1,26 +1,27 @@
 import React from "react";
-import { SelectList } from 'gestalt';
+import { SelectList } from "gestalt";
+import { Consumer } from "../context";
 
-export default function Select(props) {
-  const [val, setVal] = React.useState('1')
+const SpeedListView = ({speakingRate, setSpeakingRate}) => {
+  
   const options = [
     {
       value: "0.25",
       label: "Speed 1"
     },
-        {
+    {
       value: "0.5",
       label: "Speed 2"
     },
-        {
+    {
       value: "1",
       label: "Speed 3"
     },
-        {
+    {
       value: "2",
       label: "Speed 4"
     },
-        {
+    {
       value: "3",
       label: "Speed 5"
     }
@@ -28,10 +29,23 @@ export default function Select(props) {
   return (
     <SelectList
       id="speedSelector"
-      onChange={({ value }) => setVal(value)}
+      onChange={({ value }) => setSpeakingRate(Number(value))}
       options={options}
       placeholder="Select speed"
-      value={val}
+      value={String(speakingRate)}
     />
   );
-}
+};
+
+const SpeedList = () => (
+  <Consumer>
+    {context => (
+      <SpeedListView
+        speakingRate={context.speakingRate}
+        setSpeakingRate={context.setSpeakingRate}
+      />
+    )}
+  </Consumer>
+);
+
+export default SpeedList;

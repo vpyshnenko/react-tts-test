@@ -39,12 +39,13 @@ function submit() {
             player.play()
         });
 }
-export async function ttsRequest(text){
+export async function ttsRequest(text, speakingRate, langName){
  data.input.text = text
-    // data.voice = {
-    //     languageCode: 'en-US', 
-    //     name: 'en-US-Wavenet-D'
-    // }
+ data.audioConfig.speakingRate = speakingRate
+    data.voice = {
+        languageCode: 'en-US', 
+        name: langName
+    }
     const res = await postData('https://texttospeech.googleapis.com/v1/text:synthesize', data)
     return res
 }
