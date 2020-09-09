@@ -2,10 +2,12 @@ import React from "react";
 import { Box, IconButton } from "gestalt";
 import {Consumer} from '../context'
 
-const PlayerView = ({getAudio}) => {
+const PlayerView = ({getAudio, audioContent}) => {
   const [isOpen, setOpen] = React.useState(false);
 
   return (
+    <>
+    {audioContent && <audio src={'data:audio/wav;base64,' + audioContent}></audio>}
     <IconButton
       bgColor="red"
       iconColor="white"
@@ -16,13 +18,14 @@ const PlayerView = ({getAudio}) => {
       // onClick={() => setOpen(!isOpen)}
       onClick={() => getAudio()}
     />
+    </>
   );
 };
 
 const Player = () => (
     <Consumer>
         {context => (
-          <PlayerView getAudio={context.getAudio} />
+          <PlayerView getAudio={context.getAudio} audioContent={context.audioContent}/>
 
         )}
     </Consumer>

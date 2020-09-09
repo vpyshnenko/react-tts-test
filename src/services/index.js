@@ -1,5 +1,5 @@
 
-async function getAudioContent(text){
+export async function ttsRequest(text){
   return {
     audioContent: "UklGRsSBAABXQVZFZm10IBAAAAABAAEAwF0AAIC7AAACABAAZG…AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
   }

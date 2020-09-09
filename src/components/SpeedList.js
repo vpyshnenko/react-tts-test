@@ -27,6 +27,7 @@ export default function Select(props) {
   ];
   return (
     <SelectList
+      id="speedSelector"
       onChange={({ value }) => setVal(value)}
       options={options}
       placeholder="Select speed"
