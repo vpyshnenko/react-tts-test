@@ -4,9 +4,10 @@ import Menu from './Menu'
 import Logo from './Logo'
 import More from './More'
 import SpeedList from './SpeedList'
+import Editor from './Editor'
 
 const Header = () => (
-  <Box paddingX={1} display="flex" alignContent="between">
+  <Box padding={3} display="flex" justifyContent="between">
     <Box display="flex" alignItems="center">
       <Menu />
       <Logo />
@@ -19,18 +20,19 @@ const Header = () => (
     <More />
   </Box>
 );
-/*
+
 const Main = () => (
-  <Box display="flex">
-    <TextArea />
+  <Box padding={3} flex="grow" color="gray" >
+    <Editor />
   </Box>
 );
-*/
+
 
 const Layout = () => (
-  <Box display="flex" direction="column">
+  <Box display="flex" height="100%" direction="column">
     <Header />
-    {/*<Main />*/}
+    <Main />
+  
   </Box>
 );
 
