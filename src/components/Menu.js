@@ -2,7 +2,14 @@ import React from "react";
 import { Box, Icon } from "gestalt";
 
 const Menu = () => (
-  <Icon icon="menu" accessibilityLabel="Menu" color="darkGray" />
+  <Box marginRight={1}>
+    <Icon
+      size={22}
+      icon="menu"
+      accessibilityLabel="Menu"
+      color="darkGray"
+    />
+  </Box>
 );
 
-export default Menu
+export default Menu;
