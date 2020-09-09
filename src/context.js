@@ -8,6 +8,7 @@ const AppContext = React.createContext();
 export const Consumer = AppContext.Consumer
 export class Provider extends Component {
     state = {
+      audioContent: undefined,
         cars: {
             car001: { name: 'Honda', price: 100 },
             car002: { name: 'BMW', price: 150 },
@@ -20,8 +21,10 @@ export class Provider extends Component {
             <AppContext.Provider
                 value={{
                     cars: this.state.cars,
+                    audioContent: this.state.audioContent,
                     getAudio: async (text)=>{
                       const {audioContent} = await ttsRequest()
+                      console.log('audioCont')
                       this.setState({audioContent})
 
                     }
