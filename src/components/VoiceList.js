@@ -5,13 +5,17 @@ import {getVoices} from "../services"
 
 const VoiceListView = ({voiceName, setVoiceName}) => {
   const [options, setOptions] = React.useState([])
-    useEffect(async () => {
-      const voiceNames = await getVoices()
-      setOptions(voiceNames.map(item => ({label: item, value: item})))
+     useEffect(() => {
+       const fetchData = async () => {
+         const voiceNames = await getVoices()
+         setOptions(voiceNames.map(item => ({label: item, value: item})))
+       }
+       fetchData()
 
-    },
-    []
-  );
+
+     },
+     []
+   );
   
   return (
     <SelectList

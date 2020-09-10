@@ -7,6 +7,7 @@ import SpeedList from './SpeedList'
 import VoiceList from './VoiceList'
 import Editor from './Editor'
 import Player from './Player'
+import Player2 from './Player2'
 
 import "./styles/style.css";
 import 'gestalt/dist/gestalt.css';
@@ -18,6 +19,7 @@ const Header = () => (
       <Logo />
     </Box>
     <Box display="flex">
+    <Box marginRight={2}><Player2 /></Box>
       <Box marginRight={2}><Player /></Box>
       {/*<VoiceList />*/}
       <Box marginRight={2}><VoiceList /></Box>
