@@ -7,8 +7,7 @@ export const Consumer = AppContext.Consumer;
 export class Provider extends Component {
   state = {
     text: "",
-    loaded: false,
-    audioContent: undefined,
+    dirty: true,
     speakingRate: 1,
     voiceName: "en-US-Wavenet-D",
     audioUrl: '',
@@ -19,17 +18,16 @@ export class Provider extends Component {
       <AppContext.Provider
         value={{
           text: this.state.text,
-          audioContent: this.state.audioContent,
           speakingRate: this.state.speakingRate,
           voiceName: this.state.voiceName,
           audioUrl: this.state.audioUrl,
-          loaded: this.state.loaded,
-          setText: text => this.setState({ loaded: false, text }),
-          setSpeakingRate: speakingRate => this.setState({ speakingRate }),
-          setVoiceName: voiceName => this.setState({ voiceName }),
+          dirty: this.state.dirty,
+          
+          setText: text => this.setState({ dirty: true, text }),
+          setSpeakingRate: speakingRate => this.setState({ dirty: true, speakingRate }),
+          setVoiceName: voiceName => this.setState({dirty: true, voiceName }),
           onPlay: async () => {
- 
-            if(!this.state.text || this.state.loaded){
+            if(!this.state.dirty){
               return
             }
             const { audioContent } = await ttsRequest(
@@ -37,16 +35,8 @@ export class Provider extends Component {
               this.state.speakingRate,
               this.state.voiceName
             );
-            this.setState({ loaded: true, audioUrl: "data:audio/wav;base64," + audioContent });
+            this.setState({ dirty: false, audioUrl: "data:audio/wav;base64," + audioContent });
           },
-          getAudio: async () => {
-            const { audioContent } = await ttsRequest(
-              this.state.text,
-              this.state.speakingRate,
-              this.state.voiceName
-            );
-            this.setState({ audioContent });
-          }
         }}
       >
         {this.props.children}

@@ -8,7 +8,6 @@ const useAudio = (onPlay, url) => {
   const [playing, setPlaying] = useState(false);
 
   const toggle = async () => {
- 
     if (!playing) {
       await onPlay();
     }
@@ -35,7 +34,7 @@ const useAudio = (onPlay, url) => {
 };
 
 const PlayerView = ({ onPlay, audioUrl, disabled }) => {
-   const [playing, toggle] = useAudio(onPlay, audioUrl);
+  const [playing, toggle] = useAudio(onPlay, audioUrl);
 
   return (
     <>
@@ -45,19 +44,20 @@ const PlayerView = ({ onPlay, audioUrl, disabled }) => {
         disabled={disabled}
         accessibilityLabel={playing ? "Pause" : "Play"}
         icon={playing ? "pause" : "play"}
-        // onClick={() => setOpen(!isOpen)}
         onClick={toggle}
-        
       />
     </>
-   
   );
 };
 
 const Player = () => (
   <Consumer>
     {context => (
-      <PlayerView onPlay={context.onPlay} audioUrl={context.audioUrl} disabled={!context.text} />
+      <PlayerView
+        onPlay={context.onPlay}
+        audioUrl={context.audioUrl}
+        disabled={!context.text}
+      />
     )}
   </Consumer>
 );
