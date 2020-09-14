@@ -8,8 +8,8 @@ export class Provider extends Component {
   state = {
     text: "",
     dirty: true,
-    speakingRate: 1,
-    voiceName: "en-US-Wavenet-D",
+    speakingRate: 0.8,
+    voiceName: "en-US-Wavenet-F",
     audioUrl: '',
   };
 
