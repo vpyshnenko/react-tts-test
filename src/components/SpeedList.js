@@ -14,6 +14,10 @@ const SpeedListView = ({speakingRate, setSpeakingRate}) => {
       label: "Speed 2"
     },
     {
+      value: "0.8",
+      label: "My favorite"
+    },
+    {
       value: "1",
       label: "Speed 3"
     },

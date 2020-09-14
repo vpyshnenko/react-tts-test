@@ -21,8 +21,8 @@ async function postData(url = "", data = {}) {
 
 const data = {
   input: { text: "Hello" },
-  voice: { languageCode: "en-US", name: "en-US-Wavenet-D" },
-  audioConfig: { audioEncoding: "LINEAR16", pitch: 0, speakingRate: 1 }
+  voice: { languageCode: "en-US", name: "en-US-Wavenet-F" },
+  audioConfig: { audioEncoding: "LINEAR16", pitch: 0, speakingRate: 0.8 }
 };
 
 export async function ttsRequest(text, speakingRate, voiceName) {
